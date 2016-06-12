@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.dengmin.location"
-        minSdkVersion 15
+        minSdkVersion 19 //因为蓝牙所以要升级到19
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -19,9 +19,73 @@ android {
     }
 }
 
+//yalantis.com.sidemenu的添加
+repositories {
+    maven {
+        url "https://jitpack.io"
+        mavenCentral()
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
-    compile files('libs/locSDK_6.13.jar')
+
+//    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3' //支持实时摄像头滤镜的GPUImage源代码
+//
+//    compile 'com.yalantis:sidemenu:1.0' //侧边菜单栏动画 与下面一起用
+//    compile 'com.github.ozodrukh:CircularReveal:1.0.4' //android 实现圆形波纹动画 搭配以上一起使用
+//
+//    compile 'com.jakewharton:butterknife:7.0.1' //黄油刀
+//
+//    compile files('libs/BaiduLBS_Android.jar') //百度地图 还是需要添加相应的jar包
+//    compile files('libs/Android_Map_V2.5.0.jar') //地图
+//
+//    //以下为添加
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+//
+//    compile files('libs/android-async-http-1.4.6.jar')
+//    compile files('libs/fastjson.jar')
+//    compile files('libs/httpmime-4.2.4.jar')
+//    compile files('libs/Java-WebSocket-1.2.0-leancloud.jar')
+//
+//    compile 'de.greenrobot:greendao:1.3.7'
+//    compile files('libs/volley.jar')
+//    compile files('libs/android_api_1.1_forsdk.jar')
+//    compile files('libs/galaxy_mini.jar')
+//    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2' //点击后弧形展开的炫酷菜单
+//    compile files('libs/locSDK_4.1.jar')
+//    compile files('libs/need_lib.jar')
+//    compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
+//    compile 'com.liangfeizc:SlidePageIndicator:1.1.0@aar' //需要至少api为16
+
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile files('libs/android-async-http-1.4.6.jar')
+    compile files('libs/avoscloud-sdk-v3.4.5.jar')
+    compile files('libs/avoscloud-search-v3.4.5.jar')
+    compile files('libs/avoscloud-sns-v3.4.5.jar')
+    compile files('libs/avoscloud-statistics-v3.4.5.jar')
+    compile files('libs/fastjson.jar')
+    compile files('libs/httpmime-4.2.4.jar')
+    compile files('libs/Java-WebSocket-1.2.0-leancloud.jar')
+    compile files('libs/qq.sdk.1.6.1.jar')
+    compile files('libs/weibo.sdk.android.sso.3.0.1-leancloud.jar')
+    compile 'com.yalantis:sidemenu:1.0' //侧边菜单栏动画 与下面一起用
+    compile 'com.github.ozodrukh:CircularReveal:1.0.4' //android 实现圆形波纹动画 搭配以上一起使用
+    compile 'de.greenrobot:greendao:1.3.7'
+    compile files('libs/volley.jar')
+    compile 'com.jakewharton:butterknife:7.0.1' //黄油刀
+    compile files('libs/Android_Map_V2.5.0.jar')
+    compile files('libs/android_api_1.1_forsdk.jar')
+    compile files('libs/galaxy_mini.jar')
+    compile files('libs/BaiduLBS_Android.jar') //百度地图
+    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2' //点击后弧形展开的炫酷菜单
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3' //支持实时摄像头滤镜的GPUImage源代码
+    compile files('libs/locSDK_4.1.jar')
+    compile files('libs/need_lib.jar')
+    compile 'com.beardedhen:androidbootstrap:+' //这是bootstrap在Android上的风格
+    compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
+    compile 'com.liangfeizc:SlidePageIndicator:1.1.0@aar'
 }

@@ -2,40 +2,53 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.dengmin.location">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
-    </uses-permission>
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.READ_LOGS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <!-- 由于蓝牙设备是系统设备，所以需要有相应的权限支持 -->
+    <!-- 程序中使用了蓝牙技术需要添加的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!-- 当本程序需要和其他程序绑定时添加的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <!-- 这是读取联系人 -->
+    <!-- 写权限 -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 读权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".LocationApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
+        <!-- 需要进行key的申请 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Vj6qdovBbnrweuYVE4OxF2zSgvjb6mwP" />
+        <!-- 则生命周期不再执行，只是执行onConfigurationChanged方法 android:configChanges="orientation|screenSize" -->
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ImageDetailsActivity"></activity>
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -46,20 +59,17 @@
             </intent-filter>
         </service>
 
-        <!-- meta-data需要写在application中 -->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="uH0rqr2PaSNMPuSzqrAHCRUS" />
+        <activity android:name=".activity.ActivityCamera"
+                  android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".LocationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        <activity
+            android:theme="@style/BluttoothTheme"
+            android:name=".activity.BluetoothActivity"
+            android:screenOrientation="portrait"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.AboutActivity"></activity>
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.DialActivity"></activity>
     </application>
 
 </manifest>
